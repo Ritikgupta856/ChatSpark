@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ba991e550dec3441dba90f23c66d6825c5b44c41760dabb8401a56c3b3b40f3
-size 1006
+import React, { useContext } from "react";
+
+import Messages from "./Messages";
+import ChatFooter from "./ChatFooter";
+import ChatHeader from "./ChatHeader";
+import { AuthContext } from "../context/AuthContext";
+import { useChatContext } from "../context/ChatContext";
+
+
+const ChatPanel = () => {
+
+  
+  const { currentUser} = useContext(AuthContext);
+  const { data,users} = useChatContext();
+
+
+const isUserBlocked = users[currentUser.uid]?.blockedUsers?.find((u) => u === data.user.uid);
+const IamBlocked = users[data.user.uid]?.blockedUsers?.find((u) => u === currentUser.uid);
+
+
+
+
+  return (
+    <div className="ChatPanel">
+      <ChatHeader/>
+      <Messages />
+     {!isUserBlocked &&  !IamBlocked && <ChatFooter/> } 
+
+      {isUserBlocked && <div className="blocked-by-me">This user has been blocked</div> }
+  
+     {IamBlocked && <div className="blocked-by-other">{`${data.user.displayName} has blocked you`}</div> }
+   
+    </div>
+  );
+};
+
+export default ChatPanel;
