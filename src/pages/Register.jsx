@@ -10,11 +10,12 @@ import "./Register.css"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const gprovider = new GoogleAuthProvider();
-const fprovider = new FacebookAuthProvider();
 import logo from "../img/logo.jpg"
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
+const gprovider = new GoogleAuthProvider();
+const fprovider = new FacebookAuthProvider();
+
 const profileColors = [
   "#E95F56",
   "#C490D1",
@@ -35,7 +36,7 @@ const profileColors = [
 
 
 const Register = () => {
-  const [err, setErr] = useState(false);
+  const [setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",

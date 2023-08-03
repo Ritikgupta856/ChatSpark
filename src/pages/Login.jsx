@@ -13,12 +13,13 @@ import {
 import { auth } from "../firebase";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const gprovider = new GoogleAuthProvider();
-const fprovider = new FacebookAuthProvider();
 import ToastMessages from "../components/ToastMessages";
 import logo from "../img/logo.jpg"
 import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/Loader";
+
+const gprovider = new GoogleAuthProvider();
+const fprovider = new FacebookAuthProvider();
 
 
 function Login() {

@@ -39,6 +39,7 @@ const ChatFooter = () => {
 
   useEffect(() => {
     setText(editMessage?.text || "")
+ 
   }, [editMessage]);
 
 
@@ -253,8 +254,8 @@ const ChatFooter = () => {
       {attachmentPreview &&
         <div className="attachment-preview"
           onClick={() => {
-            setAttachment(null),
-              setAttachmentPreview(null)
+            setAttachment(null);
+              setAttachmentPreview(null);
           }}
         >
 
