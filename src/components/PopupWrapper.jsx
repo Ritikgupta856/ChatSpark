@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8d1e856e93ce2167686a7fe1049c936d94a52c6040383131cd888ac3817bd76b
-size 606
+import React from 'react';
+import './PopupWrapper.css';
+import { IoClose } from 'react-icons/io5';
+
+function PopupWrapper(props) {
+  return (
+    <div className='popup-wrapper'>
+<div className={`popup-container ${props.shortHeight ? "for-delete" : ""}` } >
+
+    {!props.noheader && <div>
+        <IoClose className='close-icon' size={20} onClick={props.onHide}  />
+          
+          <h2>{props.title}</h2>
+          </div>
+      }
+        
+        <div className="class">
+          {props.children}
+        </div>
+      </div>
+      </div>
+
+
+  )
+}
+
+export default PopupWrapper;

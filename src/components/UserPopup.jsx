@@ -1,3 +1,99 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5de6dd4da55129b4745967d2d279cf79145b05142c767c54f2dfb27be2ca1fa4
-size 2673
+import React, { useContext, useState } from 'react';
+import Avatar from './Avatar';
+import PopupWrapper from './PopupWrapper';
+
+import "./UserPopup.css";
+import { useChatContext } from '../context/ChatContext';
+import { AuthContext } from '../context/AuthContext';
+import { doc, getDoc, setDoc, updateDoc, serverTimestamp, deleteField } from 'firebase/firestore';
+import { db } from '../firebase'; 
+import Search from './Search';
+
+
+
+
+function UserPopup(props) {
+
+
+  const { currentUser } = useContext(AuthContext);
+  const { users} = useChatContext();
+
+  const handleSelect = async (user) => {
+    const combinedId =
+    currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
+    try {
+      const res = await getDoc(doc(db, "chats", combinedId));
+  
+      if (!res.exists()) {
+        await setDoc(doc(db, "chats", combinedId), { messages: [] });
+  
+        await updateDoc(doc(db, "userChats", currentUser.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL || null,
+            color:user.color
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+  
+        await updateDoc(doc(db, "userChats", user.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL || null,
+            color:currentUser.color
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+      } else{
+        await updateDoc(doc(db,"userChats",currentUser.uid),{
+          [combinedId + ".chatDeleted"]: deleteField(),
+        })
+      }
+      props.onHide();
+    } catch (error) {
+      console.error(error);
+     
+    }
+ 
+  
+  };
+  
+
+  return (
+    <PopupWrapper {...props}>
+  <Search className="search-users" />
+  <div className="user-popup">
+    {users && Object.values(users).map((user) => {
+          if (user.uid === currentUser.uid) {
+            return null; 
+          }
+        return (
+          <div className="user-item" onClick={() => handleSelect(user)}>
+          <div className="user-photo" >
+            <Avatar size="large" user={user} />
+          </div>
+          <div className="user-details">
+            <span className="display-name" >{user?.displayName}</span>
+            <p className="email">{user?.email}</p>
+          </div>
+        </div>
+        )
+        
+      })}
+        
+          
+            
+    
+  
+  </div>
+</PopupWrapper>
+
+
+  );
+}
+
+
+
+export default UserPopup
