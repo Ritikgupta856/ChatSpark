@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    padding: 0;
+  
+
+}
+.main-title{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-top: 5px;
+}
+
+.logo{
+   
+    width: 80px;
+ 
+
+}
+.web-name{
+  
+    font-size: 25px;
+    color: navy;
+}
+
+
+.login-container {
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+
+}
+
+
+.login-container .heading-1 {
+  
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+}
+
+
+.login-container .heading-2 {
+    margin-top: 12px;
+    color: #888D93;
+}
+
+.login-container .social-media{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.login-container span svg {
+    margin-right: 5px; 
+  }
+
+
+
+.login-container .social-media span {
+    display: flex;
+    height: 56px;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 1px;
+    font-weight: 600;
+    width: 250px;
+    flex-direction: row;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #6366F1, #9333EA, #F472B6);
+    border-image-slice: 1;
+  }
+  
+
+.login-container .option{
+    display: flex;
+    margin-top: 15px;;
+}
+
+.login-container .input-field {
+    display: flex;
+    margin-top: 20px;
+    padding: 9px;
+    width: 350px;
+    justify-content:center;
+    align-items: center;
+
+
+}
+
+.input-field:hover {
+    border: 2px solid darkblue;
+
+}
+
+.forgot-password {
+    display: flex;
+    color: #888D93;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    justify-content: flex-end;
+  }
+  
+
+.login-submit {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 11px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    background:  #5E6EE8;
+    margin-top: 20px;
+  
+}
+
+.login-submit::placeholder {
+    font-size: 30px;
+
+}
+
+.login-submit:hover {
+   
+    background: #4A5ACF;
+}
+
+
+.register-cta {
+   color: #888D93;;
+    position: relative;
+    top: 34px;
+    text-align: center;
+    font-size: 16px;
+
+}
