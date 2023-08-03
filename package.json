@@ -28,6 +28,12 @@
     "react-simple-image-viewer": "^1.2.2",
     "react-toastify": "^8.0.3"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+},
   "browserslist": {
     "production": [
       ">0.2%",
