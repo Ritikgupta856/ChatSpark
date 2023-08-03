@@ -1,3 +1,93 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab50487f0dd57a756c5ed581567c53bd949cdb1b8e3f8df99492104a92b5fc99
-size 2182
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+} from "react";
+import { AuthContext } from "./AuthContext";
+import React from 'react';
+
+export const ChatContext = createContext();
+
+
+
+
+
+export const ChatContextProvider = ({ children }) => {
+  const { currentUser } = useContext(AuthContext);
+  const INITIAL_STATE = {
+    chatId: "null",
+    user: {},
+  };
+
+  const [users, setUsers] = useState([]);
+const [chats, setChats] = useState([]);
+const [selectedChat, setSelectedChat] = useState(false);
+const [text, setText] = useState("");
+const [attachment, setAttachment] = useState(null);
+const [attachmentPreview, setAttachmentPreview] = useState(null);
+const [editMessage, setEditMessage] = useState(null);
+const [isTyping, setisTyping] = useState(null);
+const [imageViewer, setImageViewer] = useState(null);
+
+
+const resetFooterStates = () =>{
+  setText("");
+  setAttachment(null);
+  setAttachmentPreview(null);
+  setEditMessage(null);
+  setImageViewer(null);
+}
+
+
+
+  const chatReducer = (state, action) => {
+    switch (action.type) {
+      case "CHANGE_USER":
+        return {
+          user: action.payload,
+          chatId:
+            currentUser.uid > action.payload.uid
+              ? currentUser.uid + action.payload.uid
+              : action.payload.uid + currentUser.uid,
+        };
+
+       case "EMPTY" : 
+             return INITIAL_STATE ;
+
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE);
+
+  return (
+    <ChatContext.Provider
+      value={{
+        chats, 
+        setChats,
+        data: state,
+        dispatch,
+        users,setUsers,
+        selectedChat,
+        setSelectedChat,
+        text,
+        setText,
+        attachment,
+        setAttachment,
+        attachmentPreview,
+        setAttachmentPreview,
+        editMessage,
+        setEditMessage,
+        isTyping,
+        setisTyping,
+        imageViewer,
+        setImageViewer,
+        resetFooterStates
+      }}>
+      {children}
+    </ChatContext.Provider>
+  );
+}
+export const useChatContext = () => useContext(ChatContext)
