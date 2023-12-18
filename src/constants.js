@@ -1,2 +1,0 @@
-export const DELETE_FOR_ME = "DELETE_FOR_ME "
-export const DELETE_FOR_EVERYONE = "DELETE_FOR_EVERYONE "

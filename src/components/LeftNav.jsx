@@ -1,6 +1,6 @@
 import "./LeftNav.css"
 import React, { useContext, useState } from 'react'
-import { signOut } from "firebase/auth"
+
 import { auth, db, storage } from '../firebase'
 import { AuthContext } from '../context/AuthContext';
 import { FiPlus } from 'react-icons/fi';

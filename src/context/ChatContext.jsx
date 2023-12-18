@@ -10,9 +10,6 @@ import React from 'react';
 export const ChatContext = createContext();
 
 
-
-
-
 export const ChatContextProvider = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
   const INITIAL_STATE = {
@@ -26,8 +23,6 @@ const [selectedChat, setSelectedChat] = useState(false);
 const [text, setText] = useState("");
 const [attachment, setAttachment] = useState(null);
 const [attachmentPreview, setAttachmentPreview] = useState(null);
-const [editMessage, setEditMessage] = useState(null);
-const [isTyping, setisTyping] = useState(null);
 const [imageViewer, setImageViewer] = useState(null);
 
 
@@ -35,7 +30,6 @@ const resetFooterStates = () =>{
   setText("");
   setAttachment(null);
   setAttachmentPreview(null);
-  setEditMessage(null);
   setImageViewer(null);
 }
 
@@ -78,10 +72,6 @@ const resetFooterStates = () =>{
         setAttachment,
         attachmentPreview,
         setAttachmentPreview,
-        editMessage,
-        setEditMessage,
-        isTyping,
-        setisTyping,
         imageViewer,
         setImageViewer,
         resetFooterStates

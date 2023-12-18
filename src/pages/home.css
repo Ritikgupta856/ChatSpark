@@ -7,9 +7,6 @@
 
 .home {
   display: flex;
-
-
-
 }
 
 
@@ -84,9 +81,6 @@ h2 {
   font-size: 18px;
   color: #777;
 }
-
-
-
 
 
 .user {
@@ -285,12 +279,6 @@ h2 {
 }
 
 
-.dropdown{
-position: absolute;
-right: 12px;
-cursor: pointer;
-}
-
 .chatInfo img {
   width: 45px;
   height: 45px;
@@ -381,22 +369,8 @@ cursor: pointer;
 }
 
 
-.message-dropdown {
-  position: absolute;
-  right:0px;
-  top: 0px;
-  cursor: pointer;
-  display: none; 
-  
-}
-
 .message-dropdown.not-owner {
   left: 2px;
-}
-
-.messageContent:hover + .message-dropdown {
-  display: block;
-
 }
 
 
@@ -409,27 +383,6 @@ cursor: pointer;
 
 
 }
-
-.istyping{
-  position: absolute;
-  top: -30px;
-  left:50px;
-  display: flex;
-  align-items: center;
-  opacity: 0.7;
-
-
-
-}
-
-.typing-content{
-  display: flex;
-  font-size:small;
-
-
-
-}
-
 
 
 .attachment{
@@ -525,22 +478,6 @@ margin: auto;
   border-radius: 12px;
  font-size: 28px;
  color: #709ce6;
-
-
-}
-
-.blocked-by-me{
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  background-color: #f4f3f8;
-}
-.blocked-by-other{
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  background-color: #f4f3f8;
- 
 }
 
 .send-message.typing{

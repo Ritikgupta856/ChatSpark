@@ -1,26 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-  
-
 }
 .main-title{
     display: flex;
     align-items: center;
     position: absolute;
     margin-top: 5px;
-}
+  }
+
 
 .logo{
-   
     width: 80px;
- 
-
-}
-.web-name{
-  
-    font-size: 25px;
-    color: navy;
 }
 
 
@@ -32,8 +23,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
-
 }
 
 
@@ -42,12 +31,17 @@ body {
     font-size: 36px;
     color: black;
     font-weight: bold;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 28px
+    }
 }
 
 
 .login-container .heading-2 {
     margin-top: 12px;
     color: #888D93;
+
 }
 
 .login-container .social-media{
@@ -55,6 +49,7 @@ body {
     gap:20px;
     justify-content: center;
     margin-top: 30px;
+  
 }
 
 .login-container span svg {

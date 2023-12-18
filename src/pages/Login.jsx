@@ -31,9 +31,9 @@ function Login() {
 
   useEffect(() => {
     if (!isloading && currentUser) {
-      navigate("/");
+          navigate("/");
     }
-  }, [currentUser]);
+  }, [currentUser,isloading]);
 
   const signInWithGoogle = async () => {
     try {
