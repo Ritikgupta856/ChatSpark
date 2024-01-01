@@ -1,14 +1,15 @@
 import React, { useContext,useState } from "react";
 
 
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext, useChatContext } from "../context/ChatContext";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext, useChatContext } from "../../context/ChatContext";
 
 import { BsEmojiSmile } from 'react-icons/bs';
 import { TbSend } from 'react-icons/tb';
 import { MdDeleteForever } from 'react-icons/md';
 import { RiAttachment2 } from 'react-icons/ri';
 import EmojiPicker from 'emoji-picker-react';
+import "./ChatFooter.css"
 
 
 
@@ -20,7 +21,7 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
+import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import ClickAwayListener from 'react-click-away-listener';
@@ -37,7 +38,7 @@ const ChatFooter = () => {
 
 
   const handleKeyDown = (e) => {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
      handleSend();
 
     }
@@ -206,7 +207,7 @@ const ChatFooter = () => {
 
         </div>
 
-        <TbSend className={`send-message ${text.trim().length > 0 ? "typing" : ""}`} onClick={handleSend} />
+        {/* <TbSend className="send-message" onClick={handleSend} /> */}
 
       </div>
 

@@ -1,8 +1,7 @@
-import "../pages/home.css";
 
-
-import Chats from './Chats';
+import Chats from '../Chats/Chats';
 import React from "react";
+import "./Sidebar.css"
 function Sidebar() {
     return (
 

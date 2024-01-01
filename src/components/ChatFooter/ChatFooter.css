@@ -1,0 +1,92 @@
+.ChatFooter {
+  background-color: #f4f3f8;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachment {
+  font-size: 20px;
+  position: relative;
+  left: 34px;
+  color: #709ce6;
+  top: 1px;
+  cursor: pointer;
+}
+
+.attachment-preview {
+  position: absolute;
+  bottom: 90px;
+  width: 120px;
+  height: 120px;
+  left: 35px;
+  background-color: black;
+  border-radius: 6px;
+  display: flex;
+}
+
+.attachment-preview .delete-image-preview {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 2px;
+  cursor: pointer;
+}
+
+.attachment-preview img {
+  margin: auto;
+  width: 90%;
+  height: 90%;
+}
+.ChatFooter input {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  overflow: scroll;
+  background-color: #f8faff;
+  padding-left: 42px;
+  color: black;
+}
+
+.ChatFooter input::placeholder {
+  color: lightgrey;
+}
+
+.emoji-send-container {
+  display: flex;
+  align-items: center;
+}
+
+.emoji-btn {
+  display: flex;
+  position: absolute;
+  right: 60px;
+  font-size: 22px;
+  color: #709ce6;
+  cursor: pointer;
+}
+
+.emoji-picker {
+  position: absolute;
+  bottom: 48px;
+  right: 100px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.send-message {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  right: 20px;
+  border-radius: 12px;
+  font-size: 28px;
+  color: #709ce6;
+}

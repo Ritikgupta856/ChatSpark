@@ -160,17 +160,13 @@
    
  }
 
-
-
   .add-users {
     background-color: rgb(34, 197, 94);
     border-radius: 50%;
     cursor: pointer;
     color: white;
-    font-size: 40px;
-    display: flex;
-    margin:0px auto;
-    padding: 8px;
+    font-size: 30px;
+    padding: 6px;
   }
   
   .add-users:hover {
@@ -178,8 +174,6 @@
   }
   
   .logout-btn {
-  
-    
     cursor: pointer;
     color: black;
     padding: 8px;
@@ -190,7 +184,7 @@
  
     background-color: gray;
     border-radius: 50%;
-    margin:0px auto;
+
     
   }
   

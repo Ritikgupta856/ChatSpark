@@ -1,23 +1,21 @@
 import "./LeftNav.css"
 import React, { useContext, useState } from 'react'
 
-import { auth, db, storage } from '../firebase'
-import { AuthContext } from '../context/AuthContext';
+import { auth, db, storage } from '../../firebase'
+import { AuthContext } from '../../context/AuthContext';
 import { FiPlus } from 'react-icons/fi';
 import { IoLogOutOutline, IoClose } from 'react-icons/io5';
 
 import { MdPhotoCamera, MdAddAPhoto, MdDeleteForever } from 'react-icons/md';
-import UserPopup from "./UserPopup";
-import Avatar from "./Avatar";
+import UserPopup from "../UserPopup/UserPopup";
+import Avatar from "../Avatar/Avatar";
 import { BiEdit } from 'react-icons/bi';
 import { BiCheck } from 'react-icons/bi';
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { toast } from 'react-toastify';
-import ToastMessages from "../components/ToastMessages";
-import 'react-toastify/dist/ReactToastify.css';
 import { doc, updateDoc } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import toast from "react-hot-toast";
 
 
 
@@ -136,9 +134,9 @@ function LeftNav() {
                     }
                 },
                 {
-                    pending: "Updating profile.",
-                    success: "Profile updated successfully.",
-                    error: "Profile update failed.",
+                    loading: "Updating profile",
+                    success: "Profile updated successfully",
+                    error: "Profile update failed",
 
                 },
                 {
@@ -169,7 +167,7 @@ function LeftNav() {
     return (
 
         <div className={`left-nav ${editProfile ? 'expanded' : ''}`}>
-            <ToastMessages />
+    
 
             {editProfile &&
                 <div className="close-btn">

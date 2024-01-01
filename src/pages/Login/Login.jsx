@@ -10,13 +10,14 @@ import {
   sendPasswordResetEmail
 
 } from "firebase/auth";
-import { auth } from "../firebase";
-import { toast } from 'react-toastify';
+import { auth } from "../../firebase";
 import 'react-toastify/dist/ReactToastify.css';
-import ToastMessages from "../components/ToastMessages";
-import logo from "../img/logo.jpg"
-import { AuthContext } from "../context/AuthContext";
-import Loader from "../components/Loader";
+
+import logo from "../../img/logo.jpg"
+import { AuthContext } from "../../context/AuthContext";
+
+import Loader from "../../components/Loader/Loader";
+import toast from "react-hot-toast";
 
 const gprovider = new GoogleAuthProvider();
 const fprovider = new FacebookAuthProvider();
@@ -24,16 +25,15 @@ const fprovider = new FacebookAuthProvider();
 
 function Login() {
   const navigate = useNavigate();
-  const [err, setErr] = useState(false);
   const [email, setEmail] = useState(false);
   const { currentUser, isloading } = useContext(AuthContext);
 
 
   useEffect(() => {
     if (!isloading && currentUser) {
-          navigate("/");
+          navigate("/home");
     }
-  }, [currentUser,isloading]);
+  }, [currentUser,isloading,navigate]);
 
   const signInWithGoogle = async () => {
     try {
@@ -52,30 +52,6 @@ function Login() {
     }
   }
 
-  const notify = () => {
-    toast.error('Invalid Credientials', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  }
-  const fill = () => {
-    toast.error('Please fill out all fields.', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  }
 
 
   const handleSubmit = async (e) => {
@@ -85,9 +61,7 @@ function Login() {
 
 
     if (!email || !password) {
-
-      setErr(true);
-      fill();
+       toast.error("Please fill out all fields")
       return;
     }
 
@@ -96,8 +70,9 @@ function Login() {
 
     } catch (err) {
 
-      setErr(true);
-      notify();
+    
+      toast.error("Invalid Credentials")
+    
     }
   };
 
@@ -106,12 +81,11 @@ function Login() {
       await toast.promise(async () => {
         await sendPasswordResetEmail(auth, email)
       }, {
-        pending: 'Wait for a second',
+        loading: 'Wait for a second',
         success: 'Link is sent to your email ',
         error: 'Promise rejected '
-      }, {
-        autoClose: 5000
-      })
+      }
+      )
     } catch (error) {
       console.error(error);
     }
@@ -124,9 +98,7 @@ function Login() {
 
     <div>
 
-      <ToastMessages />
-
-      {err}
+    
 
       <div className="main-title">
         <img className='logo' src={logo} alt="" />

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
-import Avatar from "./Avatar";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+import Avatar from "../Avatar/Avatar";
 import ImageViewer from "react-simple-image-viewer";
-import { formateDate, wrapEmojisInHtmlTag } from "../helper";
-import "../pages/home.css";
+import { formateDate, wrapEmojisInHtmlTag } from "../../helper";
+import "./Message.css";
 import { Timestamp } from "firebase/firestore";
 
 const Message = ({ message }) => {
@@ -27,6 +27,7 @@ const Message = ({ message }) => {
     message.date?.nanoseconds
   );
   const date = timestamp.toDate();
+
 
   return (
     <div ref={ref} className={`message ${self && "owner"}`}>

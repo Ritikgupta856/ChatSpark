@@ -1,15 +1,13 @@
-import React, { useContext, useState } from 'react';
-import Avatar from './Avatar';
-import PopupWrapper from './PopupWrapper';
+import React, { useContext} from 'react';
+import Avatar from '../Avatar/Avatar';
+import PopupWrapper from '../PopupWrapper/PopupWrapper';
 
 import "./UserPopup.css";
-import { useChatContext } from '../context/ChatContext';
-import { AuthContext } from '../context/AuthContext';
+import { useChatContext } from '../../context/ChatContext';
+import { AuthContext } from '../../context/AuthContext';
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp, deleteField } from 'firebase/firestore';
-import { db } from '../firebase'; 
-import Search from './Search';
-
-
+import { db } from '../../firebase'; 
+import Search from '../Search/Search';
 
 
 function UserPopup(props) {

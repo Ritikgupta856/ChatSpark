@@ -14,7 +14,6 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.5",
-    "emoji-mart": "^5.5.2",
     "emoji-picker-react": "^4.4.9",
     "express": "^4.18.2",
     "firebase": "^9.17.1",
@@ -22,10 +21,12 @@
     "react": "^18.2.0",
     "react-click-away-listener": "^2.2.3",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
     "react-simple-image-viewer": "^1.2.2",
+    "react-spinners": "^0.13.8",
     "react-toastify": "^8.0.3"
   },
   "eslintConfig": {
@@ -33,7 +34,7 @@
       "react-app",
       "react-app/jest"
     ]
-},
+  },
   "browserslist": {
     "production": [
       ">0.2%",

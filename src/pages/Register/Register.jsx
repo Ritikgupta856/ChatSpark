@@ -3,16 +3,18 @@ import {IoLogoGoogle,IoLogoFacebook} from "react-icons/io";
 import { createUserWithEmailAndPassword, updateProfile ,signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,} from "firebase/auth";
-import { auth, db} from "../firebase";
+import { auth, db} from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css"
 
-import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
-import logo from "../img/logo.jpg"
-import { AuthContext } from "../context/AuthContext";
-import Loader from "../components/Loader";
+import logo from "../../img/logo.jpg"
+import { AuthContext } from "../../context/AuthContext";
+
+import Loader from "../../components/Loader/Loader";
+import toast from "react-hot-toast";
 const gprovider = new GoogleAuthProvider();
 const fprovider = new FacebookAuthProvider();
 
@@ -36,7 +38,7 @@ const profileColors = [
 
 
 const Register = () => {
-  const [setErr] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",
@@ -46,50 +48,23 @@ const Register = () => {
   });
 
   const { currentUser, isloading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
     if (!isloading && currentUser) {
       navigate("/");
     }
-  }, [currentUser, isloading]);
+  }, [currentUser, isloading,navigate]);
 
 
   const colorIndex = Math.floor(Math.random() * profileColors.length );
-  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
-
-
-  const notify = () =>{
-    toast.error('Invalid Credientials', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      });
-  }
-
-  const fill = () =>{
-    toast.error('Please fill out all fields.', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      });
-  }
  
   const signInWithGoogle = async () => {
     try {
@@ -112,8 +87,6 @@ const Register = () => {
     const { displayName, email, password} = formData;
   
     if (!displayName || !email || !password) {
-      setErr(true);
-      fill();
       return;
     }
   
@@ -134,9 +107,9 @@ const Register = () => {
       navigate("/");
       setLoading(false);
     } catch (err) {
-      setErr(true);
       setLoading(false);
-      notify();
+      toast.error("Something went wrong")
+     
     }
   };
   
@@ -146,7 +119,7 @@ const Register = () => {
   ) : (
 
     <div>
-      <ToastContainer/>
+
       <div className="main-title">
           <img className='logo' src={logo}alt="" />
           <h3 className="web-name">ChatSpark</h3>

@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Search.css";
 
-
-
 import {
   collection,
   query,
@@ -15,10 +13,10 @@ import {
   getDoc,
   deleteField,
 } from "firebase/firestore";
-import { db } from "../firebase";
-import { AuthContext } from "../context/AuthContext";
+import { db } from "../../firebase";
+import { AuthContext } from "../../context/AuthContext";
 import { RiSearch2Line } from 'react-icons/ri';
-import Avatar from "./Avatar";
+import Avatar from "../Avatar/Avatar";
 
 
 const Search = () => {
