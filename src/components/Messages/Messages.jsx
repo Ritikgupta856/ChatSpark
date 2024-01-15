@@ -6,6 +6,7 @@ import { db } from '../../firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
 
+
 function Messages() {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
@@ -34,6 +35,7 @@ function Messages() {
         ?.map((m) => (
           <Message message={m} key={m.id} onDelete={m} />
         ))}
+         
     </div>
   );
 }

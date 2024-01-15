@@ -5,7 +5,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { ChatContext, useChatContext } from "../../context/ChatContext";
 
 import { BsEmojiSmile } from 'react-icons/bs';
-import { TbSend } from 'react-icons/tb';
 import { MdDeleteForever } from 'react-icons/md';
 import { RiAttachment2 } from 'react-icons/ri';
 import EmojiPicker from 'emoji-picker-react';
@@ -39,8 +38,9 @@ const ChatFooter = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-     handleSend();
-
+      if(text.trim().length > 0){
+        handleSend();
+      }
     }
   }
 
@@ -78,6 +78,9 @@ const ChatFooter = () => {
               break;
             case 'running':
               console.log('Upload is running');
+              break;
+
+            default:
               break;
           }
         },
@@ -152,6 +155,8 @@ const ChatFooter = () => {
   return (
     <div className="ChatFooter">
 
+      <div className="chatFooter-items">
+
       {attachmentPreview &&
         <div className="attachment-preview"
           onClick={() => {
@@ -210,7 +215,8 @@ const ChatFooter = () => {
 
         </div>
 
-        {/* <TbSend className="send-message" onClick={handleSend} /> */}
+
+      </div>
 
       </div>
 

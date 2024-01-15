@@ -22,7 +22,7 @@ function Login() {
 
   useEffect(() => {
     if (!isloading && currentUser) {
-      navigate("/home");
+      navigate("/");
     }
   }, [currentUser, isloading, navigate]);
 
@@ -38,9 +38,8 @@ function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/home");
       toast.success(`Logged In`)
-    
+     
     } catch (err) {
       toast.error("Invalid Credentials");
     }

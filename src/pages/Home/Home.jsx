@@ -1,10 +1,10 @@
-import "./home.css";
+import "./Home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ChatPanel from "../../components/ChatPanel/ChatPanel";
 import React, { useContext } from "react";
 import LeftNav from "../../components/LeftNav/LeftNav";
 import { AuthContext } from "../../context/AuthContext";
-import logo from "../../img/logo.jpg";
+import logo from "../../img/logo.png";
 
 import Loader from "../../components/Loader/Loader";
 import { useChatContext } from "../../context/ChatContext";

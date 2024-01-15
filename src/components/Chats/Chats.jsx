@@ -48,7 +48,7 @@ const Chats = () => {
     };
 
     currentUser.uid && getChats();
-  }, [currentUser.uid]);
+  }, [currentUser.uid,setChats,setUsers]);
 
 
 
@@ -82,14 +82,14 @@ const Chats = () => {
     });
     return () =>unsub();
    
-    },[chats,selectedChat])
+    },[chats,selectedChat,currentUser.uid,data.chatId])
 
 
 
   useEffect(() => {
     resetFooterStates();
 
-  },[data?.chatId])
+  },[data?.chatId,resetFooterStates])
 
 
 

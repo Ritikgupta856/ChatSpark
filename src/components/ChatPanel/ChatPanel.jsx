@@ -1,9 +1,9 @@
 import React from "react";
 
 import Messages from "../Messages/Messages";
-import ChatFooter from "../ChatFooter/ChatFooter";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import "./ChatPanel.css"
+import ChatFooter from "../ChatFooter/ChatFooter";
 
 const ChatPanel = () => {
 
@@ -12,7 +12,7 @@ const ChatPanel = () => {
     <div className="ChatPanel">
       <ChatHeader />
       <Messages />
-      <ChatFooter />
+      <ChatFooter/>
     </div>
   );
 };

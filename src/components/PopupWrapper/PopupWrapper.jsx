@@ -14,7 +14,7 @@ function PopupWrapper(props) {
           </div>
       }
         
-        <div className="class">
+        <div className="users-container">
           {props.children}
         </div>
       </div>

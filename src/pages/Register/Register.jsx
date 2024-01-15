@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext,useEffect,useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
@@ -41,6 +41,14 @@ const Register = () => {
   const { currentUser, isloading } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isloading && currentUser) {
+      navigate("/");
+   
+    }
+  }, [currentUser, isloading, navigate]);
+
+
 
   const colorIndex = Math.floor(Math.random() * profileColors.length);
 
@@ -69,15 +77,11 @@ const Register = () => {
       });
 
       await setDoc(doc(db, "userChats", res.user.uid), {});
-      navigate("/")
-      toast.success("Success");
-     
+      toast.success(`Success`)
     } catch (err) {
       setLoading(false);
       toast.error("Something went wrong");
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   return isloading || (!isloading && currentUser) ? (
@@ -123,7 +127,7 @@ const Register = () => {
       </form>
 
       <p className="login-cta">
-        Already have an account? <Link to="/">Login</Link>{" "}
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
     </div>

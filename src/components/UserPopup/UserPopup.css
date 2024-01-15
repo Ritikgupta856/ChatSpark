@@ -1,16 +1,10 @@
-.user-list {
 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: gray darkgray;
-}
 
 .user-popup{
   margin-top: 10px;
+  max-height: 54vh;
+  overflow-y: scroll;
+ 
 }
 
 .user-list::-webkit-scrollbar {

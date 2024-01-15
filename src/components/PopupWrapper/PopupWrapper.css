@@ -9,7 +9,6 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    overflow-y: scroll;
   }
   
   .popup-container {
@@ -19,13 +18,8 @@
     width: 400px;
     height: 400px;
     position: relative;
-    overflow-y: auto;
+
   }
-  .popup-container.for-delete{
-    padding: 30px 30px;
-    height: 80px;
-  }
-  
   .close-icon {
     position: absolute;
     top: 10px;

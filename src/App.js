@@ -1,5 +1,5 @@
 import Register from "./pages/Register/Register";
-import Login from "./pages//Login/Login";
+import Login from "./pages/Login/Login";
 import Home from "./pages//Home/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
@@ -11,15 +11,13 @@ function App() {
   const { currentUser } = useContext(AuthContext);
 
   const ProtectedRoute = ({ children }) =>
-    currentUser ? children : <Navigate to="/" />;
+    currentUser ? children : <Navigate to="/login" />;
 
   return (
     <BrowserRouter>
       <Toaster />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="/home">
+        <Route path="/">
         <Route
             index
             element={
@@ -29,6 +27,8 @@ function App() {
             }
           ></Route>
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

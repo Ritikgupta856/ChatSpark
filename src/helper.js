@@ -4,6 +4,7 @@ export const formateDate = (date) => {
     const now = new Date();
     const diff = now.getTime() - date.getTime()
 
+    
     if(diff < 60000){
      return "now"
     }

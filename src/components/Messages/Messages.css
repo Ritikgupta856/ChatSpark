@@ -1,12 +1,12 @@
 .messages {
     background-color: #f4f3f8;
     padding: 10px;
-    height: calc(100% - 146px);
+    height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex-grow: 1;
+    
   }
-  
+
   
