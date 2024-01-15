@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ChatPanel from "../../components/ChatPanel/ChatPanel";
 import React, { useContext } from "react";
