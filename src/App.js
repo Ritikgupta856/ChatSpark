@@ -16,11 +16,11 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster />
-
       <Routes>
-      <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="/home">
-          <Route
+        <Route
             index
             element={
               <ProtectedRoute>
@@ -28,9 +28,6 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-
-       
-          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>

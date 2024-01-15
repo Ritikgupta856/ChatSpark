@@ -8,6 +8,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp, deleteField } from 'firebase/firestore';
 import { db } from '../../firebase'; 
 import Search from '../Search/Search';
+import toast from 'react-hot-toast';
 
 
 function UserPopup(props) {
@@ -53,6 +54,8 @@ function UserPopup(props) {
     } catch (error) {
       console.error(error);
      
+    }finally{
+      toast.success("User added successfully")
     }
  
   
@@ -81,10 +84,6 @@ function UserPopup(props) {
         
       })}
         
-          
-            
-    
-  
   </div>
 </PopupWrapper>
 

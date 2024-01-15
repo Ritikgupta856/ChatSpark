@@ -1,30 +1,35 @@
 .ChatFooter {
-  background-color: #f4f3f8;
-  padding: 10px;
+  padding: 14px;
   display: flex;
+  flex-direction:row;
   align-items: center;
   justify-content: space-between;
 }
 
+
+
 .attachment {
-  font-size: 20px;
+  font-size: 22px;
   position: relative;
-  left: 34px;
+  left: 10px;
   color: #709ce6;
-  top: 1px;
   cursor: pointer;
 }
+
+
 
 .attachment-preview {
   position: absolute;
   bottom: 90px;
   width: 120px;
   height: 120px;
-  left: 35px;
+  left: 12px;
   background-color: black;
   border-radius: 6px;
   display: flex;
 }
+
+
 
 .attachment-preview .delete-image-preview {
   position: absolute;
@@ -46,13 +51,16 @@
   border: none;
   outline: none;
   font-size: 18px;
+
   width: 100%;
   height: 40px;
   overflow: scroll;
   background-color: #f8faff;
-  padding-left: 42px;
-  color: black;
+  padding-left: 30px;
+  
 }
+
+
 
 .ChatFooter input::placeholder {
   color: lightgrey;
@@ -89,4 +97,4 @@
   border-radius: 12px;
   font-size: 28px;
   color: #709ce6;
-}
+} 

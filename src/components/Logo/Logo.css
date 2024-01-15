@@ -1,0 +1,15 @@
+.logo-container{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    mix-blend-mode: multiply;
+}
+
+.logo{
+    width: 70px;
+}
+
+.site-name{
+    font-size: 25px;
+    color: navy;
+}

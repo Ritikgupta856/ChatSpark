@@ -1,22 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import {IoLogoGoogle,IoLogoFacebook} from "react-icons/io";
-import { createUserWithEmailAndPassword, updateProfile ,signInWithPopup,
-  GoogleAuthProvider,
-  FacebookAuthProvider,} from "firebase/auth";
-import { auth, db} from "../../firebase";
+import React, { useContext, useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
-import "./Register.css"
+import "./Register.css";
 
-
-import 'react-toastify/dist/ReactToastify.css';
-import logo from "../../img/logo.jpg"
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../context/AuthContext";
 
 import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
-const gprovider = new GoogleAuthProvider();
-const fprovider = new FacebookAuthProvider();
+import Logo from "../../components/Logo/Logo";
 
 const profileColors = [
   "#E95F56",
@@ -36,147 +30,104 @@ const profileColors = [
   "#CD413C",
 ];
 
-
 const Register = () => {
-
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",
     email: "",
     password: "",
-    
   });
 
   const { currentUser, isloading } = useContext(AuthContext);
   const navigate = useNavigate();
 
 
-  useEffect(() => {
-    if (!isloading && currentUser) {
-      navigate("/");
-    }
-  }, [currentUser, isloading,navigate]);
-
-
-  const colorIndex = Math.floor(Math.random() * profileColors.length );
-
+  const colorIndex = Math.floor(Math.random() * profileColors.length);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- 
-  const signInWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, gprovider);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  const signInWithFacebook = async () => {
-    try {
-      await signInWithPopup(auth, fprovider);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const { displayName, email, password} = formData;
-  
+    const { displayName, email, password } = formData;
+
     if (!displayName || !email || !password) {
       return;
     }
-  
+
     try {
-  
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(res.user, { displayName});
-  
-    
+      await updateProfile(res.user, { displayName });
+
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         displayName,
         email,
-        color:profileColors[colorIndex]
+        color: profileColors[colorIndex],
       });
-  
+
       await setDoc(doc(db, "userChats", res.user.uid), {});
-      navigate("/");
-      setLoading(false);
+      navigate("/")
+      toast.success("Success");
+     
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong")
-     
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
-  
 
   return isloading || (!isloading && currentUser) ? (
-    <Loader/>
+    <Loader />
   ) : (
 
-    <div>
-
-      <div className="main-title">
-          <img className='logo' src={logo}alt="" />
-          <h3 className="web-name">ChatSpark</h3>
-          </div>
-           
-
-  
+    <div className="register-page">
     <div className="register-container ">
-
+      <div className="logo">
+        <Logo />
+      </div>
       <span className="heading-1">Create Your Account</span>
       <span className="heading-2">Connect and chat with anyone,anywhere</span>
 
-      <div className="social-media">
-    
-    
-      <span onClick={signInWithGoogle}>
-            <IoLogoGoogle size="24" />
-            Login with Google
-          </span>
-
-          <span onClick={signInWithFacebook}>
-            <IoLogoFacebook size="24" />
-            Login with Facebook
-          </span>
-
-       
-      </div>
-
-      <div className="option">
-     
-      <span>—OR—</span>
-    
-   </div>
-
       <form className="form" method="POST" onSubmit={handleSubmit}>
         <div>
-          <input type="text" name="displayName" className="input-field" placeholder="Display Name" onChange={handleChange} />
-          <input type="email" name="email" className="input-field" placeholder="Email Id" onChange={handleChange} />
-          <input type="password" name="password" className="input-field" placeholder="Enter Password" onChange={handleChange} />
-          
-
+          <input
+            type="text"
+            name="displayName"
+            className="input-field"
+            placeholder="Display Name"
+            onChange={handleChange}
+          />
+          <input
+            type="email"
+            name="email"
+            className="input-field"
+            placeholder="Email Id"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            className="input-field"
+            placeholder="Enter Password"
+            onChange={handleChange}
+          />
         </div>
 
-        <button className="register-submit" disabled={loading}>Sign up</button>
-      
-
+        <button className="register-submit" disabled={loading}>
+          Sign up
+        </button>
       </form>
 
-      <p className="login-cta">Already have an account? <Link to="/login">Login</Link> </p>
-
+      <p className="login-cta">
+        Already have an account? <Link to="/">Login</Link>{" "}
+      </p>
     </div>
     </div>
-
   );
-
-
-}
-
+};
 
 export default Register;

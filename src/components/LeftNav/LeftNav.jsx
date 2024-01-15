@@ -88,7 +88,7 @@ function LeftNav() {
         }
     }
 
-    const handleUpdateProfile = (type, value) => {
+    const handleUpdateProfile = async(type, value) => {
 
         let obj = { ...currentUser };
         switch (type) {
@@ -109,42 +109,22 @@ function LeftNav() {
         }
 
         try {
-            toast.promise(
-                async () => {
-                    const userDocRef = doc(db, "users", currentUser?.uid);
+                 const userDocRef = doc(db, "users", currentUser?.uid);
                     await updateDoc(userDocRef, obj);
                     setCurrentUser(obj);
 
                     if (type === "photo-remove") {
-                        await updateProfile(authUser, {
-                            photoURL: null,
-                        });
-                    }
-                    if (type === "name") {
-                        await updateProfile(authUser, {
-                            displayName: value,
-                        });
+                        await updateProfile(authUser, { photoURL: null });
+                    } else if (type === "name") {
+                        await updateProfile(authUser, { displayName: value });
                         setNameEdited(false);
+                    } else if (type === "photo") {
+                        await updateProfile(authUser, { photoURL: value });
                     }
-                    if (type === "photo") {
-                        await updateProfile(authUser, {
-                            photoURL: value
-                        });
-
-                    }
-                },
-                {
-                    loading: "Updating profile",
-                    success: "Profile updated successfully",
-                    error: "Profile update failed",
-
-                },
-                {
-                    autoClose: 3000,
-                }
-            );
+                    toast.success("Profile updated successfully");
+                
         } catch (error) {
-            console.log(error);
+            toast.error("Profile update failed");
         }
     };
 

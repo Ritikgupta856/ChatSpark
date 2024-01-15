@@ -173,6 +173,8 @@ const ChatFooter = () => {
         id="file"
 
       />
+
+      
       <label htmlFor="file">
         <div className="attachment"><RiAttachment2 /></div>
       </label>
@@ -182,6 +184,7 @@ const ChatFooter = () => {
         placeholder="Write a message"
         value={text}
         onKeyDown={handleKeyDown}
+        onChange={(e) => setText(e.target.value)}
       />
 
 
