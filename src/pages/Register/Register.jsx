@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
-import Logo from "../../components/Logo/Logo";
+import logo from "../../img/logo.png"
 
 const profileColors = [
   "#E95F56",
@@ -43,7 +43,7 @@ const Register = () => {
 
   useEffect(() => {
     if (!isloading && currentUser) {
-      navigate("/login");
+      navigate("/");
    
     }
   }, [currentUser]);
@@ -90,9 +90,12 @@ const Register = () => {
 
     <div className="register-page">
     <div className="register-container ">
+      
       <div className="logo">
-        <Logo />
+        <img src={logo} alt="logo" width={100}/>
       </div>
+
+   
       <span className="heading-1">Create Your Account</span>
       <span className="heading-2">Connect and chat with anyone,anywhere</span>
 

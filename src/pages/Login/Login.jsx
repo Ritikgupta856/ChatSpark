@@ -13,7 +13,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
-import Logo from "../../components/Logo/Logo";
+import logo from "../../img/logo.png"
+
 
 function Login() {
   const navigate = useNavigate();
@@ -60,9 +61,9 @@ function Login() {
       
         <div className="login-page">
       <div className="login-container">
-        <div className="logo">
-          <Logo />
-        </div>
+      <div className="logo">
+        <img src={logo} alt="logo" width={100}/>
+      </div>
 
         <span className="heading-1">Login to Your Account</span>
         <span className="heading-2">Connect and chat with anyone,anywhere</span>
