@@ -43,10 +43,10 @@ const Register = () => {
 
   useEffect(() => {
     if (!isloading && currentUser) {
-      navigate("/");
+      navigate("/login");
    
     }
-  }, [currentUser, isloading, navigate]);
+  }, [currentUser]);
 
 
 

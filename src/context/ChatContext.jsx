@@ -13,11 +13,11 @@ export const ChatContext = createContext();
 export const ChatContextProvider = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
   const INITIAL_STATE = {
-    chatId: "null",
+    chatId: null,
     user: {},
   };
 
-  const [users, setUsers] = useState([]);
+const [users, setUsers] = useState([]);
 const [chats, setChats] = useState([]);
 const [selectedChat, setSelectedChat] = useState(false);
 const [text, setText] = useState("");

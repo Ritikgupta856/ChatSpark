@@ -9,8 +9,6 @@ function ChatHeader() {
     const user = users[data.user.uid]; 
 
   return (
-    <div>
-      
       <div className="chatInfo">
 
         < Avatar size="large" user={user} />
@@ -20,9 +18,6 @@ function ChatHeader() {
           <div className="name">{user?.displayName}</div>
           <p className="user-status">{online ? "online" : "offline"}</p>
         </div>
-
-
-      </div>
     </div>
   )
 }

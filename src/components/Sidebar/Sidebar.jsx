@@ -9,8 +9,6 @@ function Sidebar() {
             <Chats/>
         </div>
 
-
-
     );
 }
 

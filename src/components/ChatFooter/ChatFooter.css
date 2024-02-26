@@ -1,12 +1,13 @@
 .ChatFooter {
   background-color: #f4f3f8;
-  
+  height: 50px;
+  padding: 10px;
+
 }
 
 .chatFooter-items{
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .ChatFooter input {
@@ -18,15 +19,17 @@
   overflow: scroll;
   background-color: white;
   border-radius: 20px;
-  padding-left: 32px;
+  padding-left: 40px;
+  padding-top: 2px;
+  padding-bottom:2px;
 
 }
 
 .attachment {
-  font-size: 22px;
+  font-size: 20px;
   position: relative;
-  left: 28px;
-  top: 3px;
+  left: 32px;
+  top: 2px;
   color: #709ce6;
   cursor: pointer;
 }
@@ -40,6 +43,7 @@
   background-color: black;
   border-radius: 6px;
   display: flex;
+
 }
 
 .attachment-preview .delete-image-preview {

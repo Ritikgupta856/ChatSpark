@@ -169,9 +169,9 @@ function LeftNav() {
 
 
                 {editProfile &&
-                    <div class="overlay">
+                    <div className="overlay">
                         <label htmlFor="fileUpload">
-                            <span class="icon">
+                            <span className="icon">
                                 {currentUser?.photoURL ? (
                                     <MdPhotoCamera size={25} />
                                 ) : (

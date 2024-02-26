@@ -1,7 +1,6 @@
 .left-nav {
     display: flex;
     flex-direction: column;
-    
     width: 60px;
     background-color: white;
     cursor: pointer;

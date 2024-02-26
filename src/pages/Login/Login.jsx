@@ -24,7 +24,7 @@ function Login() {
     if (!isloading && currentUser) {
       navigate("/");
     }
-  }, [currentUser, isloading, navigate]);
+  }, [currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
